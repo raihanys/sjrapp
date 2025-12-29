@@ -1,8 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'screens/login_screen.dart';
-import 'screens/pelabuhan/main_pelabuhan.dart';
-import 'screens/supir/main_supir.dart';
 import './services/auth_service.dart';
 import 'screens/lcl/main_admlcl.dart';
 import 'screens/warehouse/main_warehouse.dart';
@@ -28,10 +26,6 @@ class MyApp extends StatelessWidget {
       final role = await authService.getRole();
       if (role != null) {
         switch (role.toLowerCase()) {
-          case '1': // Driver
-            return const MainSupir();
-          case '3': // Pelabuhan
-            return const MainPelabuhan();
           case '4': // Admin LCL
             return const MainLCL();
           case '5': // Kepala Gudang
@@ -44,6 +38,8 @@ class MyApp extends StatelessWidget {
             return const KurirMksScreen();
           case '9': // Invoicer
             return const MainInvoicer();
+          default:
+            return const LoginScreen();
         }
       }
     }
@@ -54,7 +50,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Ralisa Mobile App',
+      title: 'SJR App',
       theme: ThemeData(
         useMaterial3: true,
         colorScheme: ColorScheme.fromSeed(

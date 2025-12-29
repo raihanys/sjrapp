@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import '../services/auth_service.dart';
-import 'pelabuhan/main_pelabuhan.dart';
-import 'supir/main_supir.dart';
 import 'lcl/main_admlcl.dart';
 import 'warehouse/main_warehouse.dart';
 import 'warehouse_mks/main_warehouse_mks.dart';
@@ -72,15 +70,19 @@ class _LoginScreenState extends State<LoginScreen> {
       return;
     }
 
+    if (role == '1' || role == '3') {
+      setState(
+        () =>
+            _errorMessage =
+                'Akun ini bukan untuk SJR App. Silakan gunakan Ralisa App.',
+      );
+      _authService.logout();
+      return;
+    }
+
     Widget target;
 
     switch (role.toLowerCase()) {
-      case '1': // Driver
-        target = const MainSupir();
-        break;
-      case '3': // Pelabuhan
-        target = const MainPelabuhan();
-        break;
       case '4': // Krani LCL
         target = const MainLCL();
         break;
@@ -100,7 +102,7 @@ class _LoginScreenState extends State<LoginScreen> {
         target = const MainInvoicer();
         break;
       default:
-        setState(() => _errorMessage = 'Role tidak valid: $role');
+        setState(() => _errorMessage = 'Role tidak valid untuk aplikasi ini');
         return;
     }
 

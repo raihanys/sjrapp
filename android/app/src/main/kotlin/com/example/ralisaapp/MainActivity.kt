@@ -1,4 +1,4 @@
-package com.example.ralisaapp
+package com.example.sjrapp
 
 import io.flutter.embedding.android.FlutterActivity
 
