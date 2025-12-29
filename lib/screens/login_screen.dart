@@ -126,9 +126,13 @@ class _LoginScreenState extends State<LoginScreen> {
               mainAxisSize: MainAxisSize.min,
               children: [
                 // Logo
-                Image.asset('assets/images/square-logo.png', height: 100),
+                Image.asset(
+                  'assets/images/square-logo.png',
+                  height: 68,
+                  width: 250,
+                ),
 
-                const SizedBox(height: 32),
+                const SizedBox(height: 28),
 
                 // Title
                 Text(
